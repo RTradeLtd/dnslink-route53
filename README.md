@@ -22,9 +22,9 @@ By default it uses ENV authentication which expects the following environment va
 
 If your AWS account needs a security token, you have to use the env auth method.
 
-You can provide a region if you want, but it looks like AWS Route53 doesn't require a specific region, so it should be fine to leave the default at `us-east-1.
+You can provide a region if you want, but it looks like AWS Route53 doesn't require a specific region, so it should be fine to leave the default at `us-east-1`. If you want to specify a different region use the `-region` flag.
 
-You *must* provide the zone id of your hosted zone.
+You *must* provide the zone id of your hosted zone through the `-zone.id` flag
 
 Example invocation using env auth:
 
