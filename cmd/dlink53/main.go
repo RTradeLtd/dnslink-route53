@@ -18,6 +18,7 @@ var (
 	region      = flag.String("region", "us-east-1", "the aws region your domain is hosted in")
 	recordName  = flag.String("record.name", "", "the name of the dnslink record, ie _dnslink.foo.bar")
 	recordValue = flag.String("record.value", "", "the value of the dnslink record, ie \"dnslink=/ipns/foo/bar\"")
+	zoneID      = flag.String("zone.id", "", "the id of the hosted zone for your domain")
 )
 
 func init() {
@@ -27,6 +28,9 @@ func init() {
 	}
 	if *recordValue == "" {
 		log.Fatal("record.value cant be empty")
+	}
+	if *zoneID == "" {
+		log.Fatal("zone id cant be empty")
 	}
 }
 
@@ -59,7 +63,7 @@ func main() {
 	if !ok {
 		log.Fatalf("%s is not a valid region", *region)
 	}
-	deployer, err := dlink53.NewDeployer(*authMethod, awsRegion, authCredentials...)
+	deployer, err := dlink53.NewDeployer(*authMethod, *zoneID, awsRegion, authCredentials...)
 	if err != nil {
 		log.Fatal(err)
 	}

@@ -19,7 +19,7 @@ type AwsLinkManager struct {
 
 // Deployer is used to handle deployment of DNSLink TXT records to route53 domains
 type Deployer struct {
-	zone   string
+	zoneID string
 	region aws.Region
 	client *route53.Client
 }
@@ -27,7 +27,7 @@ type Deployer struct {
 // NewDeployer is used to instantiate our DNSLink deployer
 // if authMethod is set to get, credentials variadic parameter must be given
 // the first element in the array is the access key, and the second is the secret key
-func NewDeployer(authMethod string, region aws.Region, credentials ...string) (*Deployer, error) {
+func NewDeployer(authMethod, zoneID string, region aws.Region, credentials ...string) (*Deployer, error) {
 	var (
 		auth aws.Auth
 		err  error
@@ -47,7 +47,7 @@ func NewDeployer(authMethod string, region aws.Region, credentials ...string) (*
 		return nil, err
 	}
 	return &Deployer{
-		zone:   region.Name,
+		zoneID: zoneID,
 		region: region,
 		client: route53.New(auth, region),
 	}, nil
@@ -55,9 +55,9 @@ func NewDeployer(authMethod string, region aws.Region, credentials ...string) (*
 
 // AddEntry adds a TXT entry to a domain-name with a ttl value of 300 seconds
 func (d *Deployer) AddEntry(name, value string) (*r.ChangeResourceRecordSetsResponse, error) {
-	if !strings.HasSuffix(name, "_dnslink.") {
+	if !strings.HasPrefix(name, "_dnslink.") {
 		return nil, errors.New("invalid dnslink name")
 	}
 	formattedValue := fmt.Sprintf("\"%s\"", value)
-	return d.client.Zone(d.zone).Add("TXT", name, formattedValue)
+	return d.client.Zone(d.zoneID).Add("TXT", name, formattedValue)
 }
