@@ -1,0 +1,6 @@
+github.com/mitchellh/goamz v0.0.0-20150317174335-caaaea8b30ee h1:Wp4ixY2/QEZOrQrGMF1h1x4yxqsef+aQPse0XMXzZhs=
+github.com/mitchellh/goamz v0.0.0-20150317174335-caaaea8b30ee/go.mod h1:svb8iUupD5i7RyGXoCUrk3EQSaXjWxKuqiZ0j41Jmm8=
+github.com/segmentio/go-route53 v0.2.0 h1:3fZtmSfL1/4QhsXeQfgyQnuzRdjFUUoBx2m6fS+eADI=
+github.com/segmentio/go-route53 v0.2.0/go.mod h1:575jRNF+GCE+8yzzuNY+tLjDqgy6+pmLNl5oJKyTbXw=
+github.com/vaughan0/go-ini v0.0.0-20130923145212-a98ad7ee00ec h1:DGmKwyZwEB8dI7tbLt/I/gQuP559o/0FrAkHKlQM/Ks=
+github.com/vaughan0/go-ini v0.0.0-20130923145212-a98ad7ee00ec/go.mod h1:owBmyHYMLkxyrugmfwE/DLJyW8Ro9mkphwuVErQ0iUw=
