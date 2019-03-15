@@ -4,6 +4,12 @@ Used to deploy dnslink txt records to AWS Route53
 
 Can be used as a library, or as a cli
 
+## Install
+
+`go get -v github.com/RTradeLtd/dnslink-route53`
+`cd $GOPATH/src/github.com/RTradeLTd/dnslink-route53`
+`make install`
+
 ## Usage - CLI
 
 To install run `make install`
