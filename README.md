@@ -6,9 +6,9 @@ Can be used as a library, or as a cli
 
 ## Install
 
-`go get -v github.com/RTradeLtd/dnslink-route53`
-`cd $GOPATH/src/github.com/RTradeLTd/dnslink-route53`
-`make install`
+* `go get -v github.com/RTradeLtd/dnslink-route53`
+* `cd $GOPATH/src/github.com/RTradeLTd/dnslink-route53`
+* `make install`
 
 ## Usage - CLI
 
