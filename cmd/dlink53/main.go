@@ -17,12 +17,16 @@ var (
 	secretKey   = flag.String("secret.key", "", "aws secret key use if not using env auth method")
 	region      = flag.String("region", "us-east-1", "the aws region your domain is hosted in")
 	recordName  = flag.String("record.name", "", "the name of the dnslink record, ie _dnslink.foo.bar")
-	recordValue = flag.String("record.value", "", "the value of the dnslink record, ie \"dnslink=/ipns/foo/bar\"")
+	recordValue = flag.String("record.value", "", "the value of the dnslink record, ie dnslink=/ipns/foo/bar")
 	zoneID      = flag.String("zone.id", "", "the id of the hosted zone for your domain")
 )
 
 func init() {
 	flag.Parse()
+	if len(os.Args) <= 1 {
+		flag.PrintDefaults()
+		os.Exit(1)
+	}
 	if *recordName == "" {
 		log.Fatal("record.name cant be empty")
 	}
@@ -44,10 +48,6 @@ func returnAuthCredentials() ([]string, error) {
 }
 
 func main() {
-	if len(os.Args) <= 1 {
-		flag.PrintDefaults()
-		os.Exit(1)
-	}
 	var (
 		authCredentials []string
 		awsRegion       aws.Region

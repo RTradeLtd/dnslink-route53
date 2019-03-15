@@ -27,3 +27,23 @@ $ dlink53 -record.name _dnslink.foo.bar -record.value dnslink=/ipns/foo/bar -zon
 
 successfully deployed dnslink entry to route53
 ```
+
+To show the help menu:
+
+```shell
+$ dlink53 -h
+  -access.key string
+        aws access key to use if not using env auth
+  -name string
+        set aws authentication method, valid values are env or get (default "env")
+  -record.name string
+        the name of the dnslink record, ie _dnslink.foo.bar
+  -record.value string
+        the value of the dnslink record, ie dnslink=/ipns/foo/bar
+  -region string
+        the aws region your domain is hosted in (default "us-east-1")
+  -secret.key string
+        aws secret key use if not using env auth method
+  -zone.id string
+        the id of the hosted zone for your domain
+```
