@@ -22,6 +22,12 @@ var (
 
 func init() {
 	flag.Parse()
+	if *recordName == "" {
+		log.Fatal("record.name cant be empty")
+	}
+	if *recordValue == "" {
+		log.Fatal("record.value cant be empty")
+	}
 }
 
 func returnAuthCredentials() ([]string, error) {

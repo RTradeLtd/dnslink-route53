@@ -2,6 +2,7 @@ package dlink53
 
 import (
 	"errors"
+	"fmt"
 	"strings"
 
 	"github.com/mitchellh/goamz/aws"
@@ -57,5 +58,6 @@ func (d *Deployer) AddEntry(name, value string) (*r.ChangeResourceRecordSetsResp
 	if !strings.HasSuffix(name, "_dnslink.") {
 		return nil, errors.New("invalid dnslink name")
 	}
-	return d.client.Zone(d.zone).Add("TXT", name, value)
+	formattedValue := fmt.Sprintf("\"%s\"", value)
+	return d.client.Zone(d.zone).Add("TXT", name, formattedValue)
 }
